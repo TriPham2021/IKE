@@ -9,11 +9,8 @@
 # ===========================
 
 from vex import (
-    Brain,
-    Controller,
-    Motor,
-    Ports,
-    BrakeType, FORWARD, REVERSE, PERCENT
+    Brain, Controller, Motor,
+    Ports, BrakeType, FORWARD, REVERSE, PERCENT
 )
 
 
@@ -39,21 +36,19 @@ left_wheel_motor = Motor(Ports.PORT1)
 
 def control_drive_base():
     joystick_a_position = controller.axisA.position()
-    if joystick_a_position != 0:
+    if joystick_a_position:   # if Joystick A is not zero, then move
         left_wheel_motor.spin(FORWARD, joystick_a_position, PERCENT)
-    # otherwise stop
-    else:
+    else:   # otherwise stop
         left_wheel_motor.stop(BrakeType.HOLD)
 
     joystick_d_position = controller.axisD.position()
-    if joystick_d_position != 0:
+    if joystick_d_position:   # if Joystick D is not zero, then move
         right_wheel_motor.spin(FORWARD, joystick_d_position, PERCENT)
-    # otherwise stop
-    else:
+    else:   # otherwise stop
         right_wheel_motor.stop(BrakeType.HOLD)
 
 
-def control_waist(speed=80):
+def control_waist(speed=100):   # default speed=100 but can be set different
     if controller.buttonLUp.pressing():
         waist_motor.spin(FORWARD, speed, PERCENT)
 
@@ -64,7 +59,7 @@ def control_waist(speed=80):
         waist_motor.stop(BrakeType.HOLD)
 
 
-def control_grabbing_hands(speed=100):
+def control_grabbing_hands(speed=100):   # default 100 but can be set different
     if controller.buttonRUp.pressing():
         grabing_arm_motor.spin(FORWARD, speed, PERCENT)
 

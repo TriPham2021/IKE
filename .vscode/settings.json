@@ -16,12 +16,16 @@
   ],
 
   "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+  ],
 
   "python.linting.mypyEnabled": false,
 
   "python.linting.pydocstyleEnabled": false,
 
   "python.linting.pycodestyleEnabled": true,
+  "python.linting.pycodestyleArgs": [
+  ],
 
   "python.linting.prospectorEnabled": true,
 
