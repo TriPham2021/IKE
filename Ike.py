@@ -22,7 +22,7 @@ brain = Brain()
 
 # init the Controller
 controller = Controller()
-controller.set_deadband(3)   # if joystick position < 3%, then consider it 0%
+controller.set_deadband(9)   # if joystick position < 9%, then consider it 0%
 
 # init the Motors
 waist_motor = Motor(Ports.PORT11, True)   # reverse polarity
@@ -75,5 +75,5 @@ def control_grabbing_hands(speed=100):   # default 100 but can be set different
 
 while True:
     control_drive_base()
-    control_waist(50)
+    control_waist(20)   # <- to slow down the waist
     control_grabbing_hands(80)
