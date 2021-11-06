@@ -9,7 +9,7 @@
 # ===========================
 
 from vex import (
-    Brain, Controller, Motor,
+    Brain, Bumper, Controller, Motor,
     Ports, BrakeType, FORWARD, REVERSE, PERCENT
 )
 
@@ -30,6 +30,9 @@ grabing_arm_motor = Motor(Ports.PORT5)
 right_wheel_motor = Motor(Ports.PORT12, True)   # reverse polarity
 left_wheel_motor = Motor(Ports.PORT1)
 
+# init the Bumper
+waist_bumper = Bumper(Ports.PORT2)
+
 
 # FUNCTIONS
 # =========
@@ -49,7 +52,8 @@ def control_drive_base():
 
 
 def control_waist(speed=100):   # default speed=100 but can be set different
-    if controller.buttonLUp.pressing():
+    # Note safety feature with the waist bumper
+    if controller.buttonLUp.pressing() and (not waist_bumper.pressing()):
         waist_motor.spin(FORWARD, speed, PERCENT)
 
     elif controller.buttonLDown.pressing():
