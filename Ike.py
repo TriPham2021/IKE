@@ -63,11 +63,12 @@ def control_grabbing_hands(speed=100):   # default 100 but can be set different
     if controller.buttonRUp.pressing():
         grabing_arm_motor.spin(FORWARD, speed, PERCENT)
 
+
     elif controller.buttonRDown.pressing():
         grabing_arm_motor.spin(REVERSE, speed, PERCENT)
-
-    else:
-        grabing_arm_motor.stop(BrakeType.HOLD)
+    
+        
+ 
 
 
 # MAIN PROGRAM LOOP
